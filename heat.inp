@@ -1,0 +1,44 @@
+*** Heat Transfer Prob
+*HEADING
+Plate Heat Transfer
+****
+*INCLUDE, INPUT=Nplate.inp
+**Node Sets=NplateAll
+*INCLUDE, INPUT=Eplate.inp
+**Element Sets=EplateAll
+*INCLUDE, INPUT=Nt0.inp
+**Node Sets=Nnt0
+*INCLUDE, INPUT=Nt1.inp
+**Node Sets=Nnt1
+***
+***
+*MATERIAL,NAME=EL
+*CONDUCTIVITY
+50.0,0.0
+*DENSITY
+7.8E-09
+*SPECIFIC HEAT
+446E06
+****
+*SHELL SECTION,MATERIAL=EL,ELSET=EplateAll
+0.01
+****
+*PHYSICAL CONSTANTS, ABSOLUTE ZERO=-273.15
+****
+*INITIAL CONDITIONS, TYPE=TEMPERATURE
+NplateAll,25.0
+****
+*BOUNDARY
+Nnt0,11,11,25.0
+Nnt1,11,11,50.0
+****
+*STEP
+*HEAT TRANSFER, DIRECT
+0.1,1.0
+****Output Requests
+*NODE FILE
+NT
+*END STEP
+
+
+
